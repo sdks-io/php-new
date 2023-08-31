@@ -14,7 +14,7 @@
 | `name` | `string` | Required | - | getName(): string | setName(string name): void |
 | `photoUrls` | `string[]` | Required | - | getPhotoUrls(): array | setPhotoUrls(array photoUrls): void |
 | `tags` | [`?(Tag[])`](../../doc/models/tag.md) | Optional | - | getTags(): ?array | setTags(?array tags): void |
-| `status` | [`?string (StatusEnum)`](../../doc/models/status-enum.md) | Optional | pet status in the store | getStatus(): ?string | setStatus(?string status): void |
+| `status` | [`?string(StatusEnum)`](../../doc/models/status-enum.md) | Optional | pet status in the store | getStatus(): ?string | setStatus(?string status): void |
 
 ## Example (as JSON)
 

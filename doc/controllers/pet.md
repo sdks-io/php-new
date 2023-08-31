@@ -14,43 +14,14 @@ $petController = $client->getPetController();
 
 ## Methods
 
-* [Upload File](../../doc/controllers/pet.md#upload-file)
 * [Inpet](../../doc/controllers/pet.md#inpet)
+* [Upload File](../../doc/controllers/pet.md#upload-file)
 * [Update an Pet](../../doc/controllers/pet.md#update-an-pet)
 * [Find Pet in the Status](../../doc/controllers/pet.md#find-pet-in-the-status)
 * [Find Pets an Tags](../../doc/controllers/pet.md#find-pets-an-tags)
 * [Get Pet by Id](../../doc/controllers/pet.md#get-pet-by-id)
-* [Update Pet With Form](../../doc/controllers/pet.md#update-pet-with-form)
 * [Delete Pet](../../doc/controllers/pet.md#delete-pet)
-
-
-# Upload File
-
-uploads an image
-
-```php
-function uploadFile(int $petId, ?string $additionalMetadata = null, ?FileWrapper $file = null): ApiResponse
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `petId` | `int` | Template, Required | ID of pet to update |
-| `additionalMetadata` | `?string` | Form, Optional | Additional data to pass to server |
-| `file` | `?FileWrapper` | Form, Optional | file to upload |
-
-## Response Type
-
-[`ApiResponse`](../../doc/models/api-response.md)
-
-## Example Usage
-
-```php
-$petId = 152;
-
-$result = $petController->uploadFile($petId);
-```
+* [Update Pet With Form](../../doc/controllers/pet.md#update-pet-with-form)
 
 
 # Inpet
@@ -89,6 +60,35 @@ $petController->inpet($body);
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
 | 405 | Invalid input | `ApiException` |
+
+
+# Upload File
+
+uploads an image
+
+```php
+function uploadFile(int $petId, ?string $additionalMetadata = null, ?FileWrapper $file = null): ApiResponse
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `petId` | `int` | Template, Required | ID of pet to update |
+| `additionalMetadata` | `?string` | Form, Optional | Additional data to pass to server |
+| `file` | `?FileWrapper` | Form, Optional | file to upload |
+
+## Response Type
+
+[`ApiResponse`](../../doc/models/api-response.md)
+
+## Example Usage
+
+```php
+$petId = 152;
+
+$result = $petController->uploadFile($petId);
+```
 
 
 # Update an Pet
@@ -143,7 +143,7 @@ function findPetInTheStatus(array $status): array
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `status` | [`string[] (Status2Enum)`](../../doc/models/status-2-enum.md) | Query, Required | Status values that need to be considered for filter |
+| `status` | [`string(Status2Enum)[]`](../../doc/models/status-2-enum.md) | Query, Required | Status values that need to be considered for filter |
 
 ## Response Type
 
@@ -240,41 +240,6 @@ $result = $petController->getPetById($petId);
 | 404 | Pet not found | `ApiException` |
 
 
-# Update Pet With Form
-
-Updates a pet in the store with form data
-
-```php
-function updatePetWithForm(int $petId, ?string $name = null, ?string $status = null): void
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `petId` | `int` | Template, Required | ID of pet that needs to be updated |
-| `name` | `?string` | Form, Optional | Updated name of the pet |
-| `status` | `?string` | Form, Optional | Updated status of the pet |
-
-## Response Type
-
-`void`
-
-## Example Usage
-
-```php
-$petId = 152;
-
-$petController->updatePetWithForm($petId);
-```
-
-## Errors
-
-| HTTP Status Code | Error Description | Exception Class |
-|  --- | --- | --- |
-| 405 | Invalid input | `ApiException` |
-
-
 # Delete Pet
 
 Deletes a pet
@@ -308,4 +273,39 @@ $petController->deletePet($petId);
 |  --- | --- | --- |
 | 400 | Invalid ID supplied | `ApiException` |
 | 404 | Pet not found | `ApiException` |
+
+
+# Update Pet With Form
+
+Updates a pet in the store with form data
+
+```php
+function updatePetWithForm(int $petId, ?string $name = null, ?string $status = null): void
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `petId` | `int` | Template, Required | ID of pet that needs to be updated |
+| `name` | `?string` | Form, Optional | Updated name of the pet |
+| `status` | `?string` | Form, Optional | Updated status of the pet |
+
+## Response Type
+
+`void`
+
+## Example Usage
+
+```php
+$petId = 152;
+
+$petController->updatePetWithForm($petId);
+```
+
+## Errors
+
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 405 | Invalid input | `ApiException` |
 
